@@ -1,0 +1,30 @@
+# 個人筆記（不上傳）
+LEARN.md
+learns/
+
+# Python
+__pycache__/
+*.pyc
+
+# 工具腳本（開發用，學生不需要）
+fix_*.py
+convert_*.py
+add_*.py
+integrate_cases.py
+generate_exercises.py
+generate_missing_exercises.py
+mermaid_demo.html
+
+# 系統檔案
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 其他非教材檔案
+*.srt
+claude-code-blog-*.md
+AI vibe coding*.md
+claude_use_cases_zh.md
+claude-code-guide.html
+my-expense-tracker/
+.claude/
