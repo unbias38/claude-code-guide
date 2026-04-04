@@ -1,0 +1,1091 @@
+1
+00:00:00,000 --> 00:00:05,733
+Claude keeps getting insanely powerful and unstoppable, and I really mean it as a Claude power user.
+
+2
+00:00:05,733 --> 00:00:13,833
+So what if you could turn Claude into a full AI marketing team that research, write, analyze, and design, all working together?
+
+3
+00:00:13,833 --> 00:00:20,000
+So in this video, I'll walk you step-by-step how to build this entire system from scratch inside Claude Code.
+
+4
+00:00:20,000 --> 00:00:21,733
+Even if you are not technical.
+
+5
+00:00:21,733 --> 00:00:22,866
+Let's go.
+
+6
+00:00:23,500 --> 00:00:28,266
+To design your first AI marketing team in Claude, follow these four steps.
+
+7
+00:00:28,266 --> 00:00:29,866
+Step one, map your marketing function.
+
+8
+00:00:29,866 --> 00:00:32,866
+What marketing tasks you actually do every week.
+
+9
+00:00:32,866 --> 00:00:36,733
+Step two, turn each repeatable task into a skill.
+
+10
+00:00:36,733 --> 00:00:39,033
+Ideally, one skill per workflow.
+
+11
+00:00:39,033 --> 00:00:43,466
+Step three, group similar skills into non-overlapping agent roles.
+
+12
+00:00:43,466 --> 00:00:47,733
+So you have dedicated and focused agents that produce better work.
+
+13
+00:00:47,733 --> 00:00:50,566
+Step four, connect agents and skills as a team.
+
+14
+00:00:50,566 --> 00:00:56,333
+Set up your project so Claude knows who is on the team and when to use agents versus skills.
+
+15
+00:00:56,333 --> 00:01:02,300
+So today we're building exactly that for a travel brand called GoTravel, 5 agents, 12 skills.
+
+16
+00:01:02,300 --> 00:01:05,866
+And we are using Claude Code to build the whole thing.
+
+17
+00:01:05,866 --> 00:01:10,233
+Of course, it might look different for your brand depending on your marketing focus.
+
+18
+00:01:10,233 --> 00:01:12,133
+But the same concept applies.
+
+19
+00:01:12,133 --> 00:01:14,466
+For now, there are three popular ways to use Claude Code.
+
+20
+00:01:14,466 --> 00:01:17,233
+Claude Code desktop where you just switch to Claude Code from a tab.
+
+21
+00:01:17,233 --> 00:01:19,633
+An IDE like VS Code or Cursor.
+
+22
+00:01:19,633 --> 00:01:21,866
+Or a terminal, which gives you the full power.
+
+23
+00:01:21,866 --> 00:01:27,733
+So for this video, I will be using VS Code so we can see the files and folders side-by-side.
+
+24
+00:01:27,733 --> 00:01:29,066
+So first, download VS Code.
+
+25
+00:01:29,066 --> 00:01:32,166
+And then on VS Code, go to extension.
+
+26
+00:01:32,166 --> 00:01:33,566
+Search for Claude Code.
+
+27
+00:01:33,566 --> 00:01:36,733
+And install the one by Anthropic Official.
+
+28
+00:01:36,733 --> 00:01:40,266
+So once installed, click the Claude icon in the sidebar.
+
+29
+00:01:40,266 --> 00:01:42,233
+Log in with your Claude plan account.
+
+30
+00:01:42,233 --> 00:01:44,766
+It will open your browser for login.
+
+31
+00:01:44,766 --> 00:01:46,066
+And you'll be good to go.
+
+32
+00:01:46,066 --> 00:01:50,133
+All right, so I already set up the brand folder called GoTravel.
+
+33
+00:01:50,133 --> 00:01:55,733
+And inside, you can see we have got subfolders for different departments, like sales, ops, and marketing.
+
+34
+00:01:55,733 --> 00:01:59,666
+So think of it like how a real business organizes their work.
+
+35
+00:01:59,666 --> 00:02:02,100
+But today, we will focus on the marketing folder.
+
+36
+00:02:02,100 --> 00:02:04,500
+So inside, we will set up two types of folders.
+
+37
+00:02:04,500 --> 00:02:07,700
+So one I call the system folders, like context, SOP, templates.
+
+38
+00:02:07,700 --> 00:02:11,533
+Those are reusable by your AI agents.
+
+39
+00:02:11,533 --> 00:02:16,266
+And then the working folders, like ads, pages, presentations.
+
+40
+00:02:16,266 --> 00:02:19,633
+So when your agents produce work, everything goes here.
+
+41
+00:02:19,633 --> 00:02:26,833
+Now a really important step is we need to first load some context inside the context folder.
+
+42
+00:02:26,833 --> 00:02:30,233
+Like your brand voice guide, style guide, product offerings, marketing strategy.
+
+43
+00:02:30,233 --> 00:02:35,266
+So your agents are pre-equipped with things about your brand, and it will make the whole difference.
+
+44
+00:02:35,266 --> 00:02:38,400
+So other useful files like the templates or SOPs.
+
+45
+00:02:38,400 --> 00:02:44,300
+By the way, this is what we're covering in our AI growth system for a marketing program inside our community.
+
+46
+00:02:44,300 --> 00:02:46,366
+Where you'll get all the templates and we go much deeper.
+
+47
+00:02:46,366 --> 00:02:49,166
+So if you're interested, you can find the link below to join.
+
+48
+00:02:49,166 --> 00:02:51,200
+Now open the project folder on VS Code.
+
+49
+00:02:51,200 --> 00:02:55,733
+The very first step is to initialize this project by creating the claude.md file.
+
+50
+00:02:55,733 --> 00:03:00,533
+So this is basically the custom instructions for the entire project.
+
+51
+00:03:00,533 --> 00:03:04,366
+And you can let Claude scan your folder and draft it for you.
+
+52
+00:03:04,366 --> 00:03:07,966
+And immediately, we have this claude.md file created.
+
+53
+00:03:07,966 --> 00:03:10,233
+But note, we will keep updating this file.
+
+54
+00:03:10,233 --> 00:03:13,266
+So it is not like a one-off process.
+
+55
+00:03:13,266 --> 00:03:15,633
+Now another thing is to install the official skill.
+
+56
+00:03:15,633 --> 00:03:21,500
+So these are the pre-built skills by Anthropic, so you can use right away for your project.
+
+57
+00:03:21,500 --> 00:03:23,500
+So first, type the slash command plugins.
+
+58
+00:03:23,500 --> 00:03:27,533
+We're going to first add the official skills GitHub repository in Marketplace.
+
+59
+00:03:27,533 --> 00:03:29,233
+And then go back to plugins.
+
+60
+00:03:29,233 --> 00:03:30,866
+Search for document skill.
+
+61
+00:03:30,866 --> 00:03:32,066
+And click install.
+
+62
+00:03:32,066 --> 00:03:35,766
+Now if you type the slash command and see all those skills.
+
+63
+00:03:35,766 --> 00:03:39,366
+And that means you have successfully installed the official skill pack.
+
+64
+00:03:39,366 --> 00:03:44,700
+All right, let's build our first marketing skills, branded deck skills that every marketer needs.
+
+65
+00:03:44,700 --> 00:03:48,366
+And for this one, we'll use what I call the reference-based method.
+
+66
+00:03:48,366 --> 00:03:52,933
+So you give Claude examples or templates of what good looks like, and let it study the patterns.
+
+67
+00:03:52,933 --> 00:03:59,000
+Now, to build a great deck creation skill that really follows your brand template, you need two things.
+
+68
+00:03:59,000 --> 00:04:00,600
+First is a branded deck template.
+
+69
+00:04:00,600 --> 00:04:04,400
+And a detailed understanding of how that template works.
+
+70
+00:04:04,400 --> 00:04:08,133
+So inside the templates folder, we already have an existing deck template.
+
+71
+00:04:08,133 --> 00:04:12,133
+So this is the style that we want Claude to follow exactly.
+
+72
+00:04:12,133 --> 00:04:16,033
+Then, have Claude analyze this template first and generate an analysis report.
+
+73
+00:04:16,033 --> 00:04:18,933
+So it will come back with a really detailed analysis.
+
+74
+00:04:18,933 --> 00:04:21,500
+Now we're ready to create our first skill.
+
+75
+00:04:21,500 --> 00:04:28,833
+So we will ask it to extend the official PowerPoint creation skill, and generate a new branded deck skill based on the template and the analysis report.
+
+76
+00:04:28,833 --> 00:04:31,433
+And immediately, we have our first skill.
+
+77
+00:04:31,433 --> 00:04:34,300
+So Claude creates a new folder called skills.
+
+78
+00:04:34,300 --> 00:04:39,400
+And underneath, we have the branded deck skill containing the assets and references.
+
+79
+00:04:39,400 --> 00:04:46,233
+Now whenever we want to create on-brand slide decks, we can just give it some background information, and let Claude create.
+
+80
+00:04:46,233 --> 00:04:52,433
+So in this case, we want it to create a campaign strategy deck for an upcoming summer campaign.
+
+81
+00:04:52,433 --> 00:04:57,200
+So it will call the skill we just created, and return a slide deck with 13 slides.
+
+82
+00:04:57,200 --> 00:05:02,333
+And you can see it is following exactly the same brand presentation template we just see.
+
+83
+00:05:02,333 --> 00:05:06,666
+Although some slides still need to fix, like the margins, the charts.
+
+84
+00:05:06,666 --> 00:05:08,600
+It is 90% done.
+
+85
+00:05:08,600 --> 00:05:11,533
+And using this method, you can include other templates as well.
+
+86
+00:05:11,533 --> 00:05:15,766
+Perhaps one for strategy deck, one for client reporting, one for product launches.
+
+87
+00:05:15,766 --> 00:05:17,333
+And Claude will follow exactly that.
+
+88
+00:05:17,333 --> 00:05:19,233
+Now that you build your first skills.
+
+89
+00:05:19,233 --> 00:05:24,000
+But there are so many other marketing use cases you could turn into skills.
+
+90
+00:05:24,000 --> 00:05:27,333
+So if you want more ideas on what to build next.
+
+91
+00:05:27,333 --> 00:05:32,066
+Then this resource I put together with HubSpot is exactly what you need.
+
+92
+00:05:32,066 --> 00:05:34,500
+It's called The AI Toolkit I Use Every Week.
+
+93
+00:05:34,500 --> 00:05:41,200
+I made this because most of us are either juggling too many tools with no real system, or stuck using one tool for everything.
+
+94
+00:05:41,200 --> 00:05:48,300
+It covers my favorite use cases across popular AI tools like Claude, ChatGPT, Gemini, and Perplexity.
+
+95
+00:05:48,300 --> 00:05:54,233
+Based on my personal experience working with these tools, and when I use one tool over the other.
+
+96
+00:05:54,233 --> 00:06:00,300
+For Claude, you will see how I use it for things like strategy brainstorming, data visualization, content repurposing.
+
+97
+00:06:00,300 --> 00:06:05,433
+And honestly, any of these could become the next skill you build in your own setup.
+
+98
+00:06:05,433 --> 00:06:09,133
+You can use them as a starting point, then adapt for your own marketing needs.
+
+99
+00:06:09,133 --> 00:06:11,200
+So grab it for free in the description.
+
+100
+00:06:11,200 --> 00:06:15,400
+Thank you HubSpot for partnering with me on this resource, and for sponsoring this video.
+
+101
+00:06:15,400 --> 00:06:20,533
+All right, so that was one way to create a skill, using brand templates and references.
+
+102
+00:06:20,533 --> 00:06:26,200
+Now this time we're going to create a skill that connects to an external MCP tool for image generation.
+
+103
+00:06:26,200 --> 00:06:29,233
+We're going to create our social creative designer skill.
+
+104
+00:06:29,233 --> 00:06:31,466
+So first, set up your creative style library.
+
+105
+00:06:31,466 --> 00:06:34,466
+Under the templates folder, create a subfolder called social creatives.
+
+106
+00:06:34,466 --> 00:06:36,733
+And then include all those on-brand templates.
+
+107
+00:06:36,733 --> 00:06:42,300
+So these serve as visual inspiration for Claude, and not the exact copy.
+
+108
+00:06:42,300 --> 00:06:49,433
+Then we also have the style guide, so Claude knows what style are available and when to use them.
+
+109
+00:06:49,433 --> 00:06:54,066
+Now since this skill use the Nano Banana model to generate images, so we also need to set up the MCP connection first.
+
+110
+00:06:54,066 --> 00:06:59,100
+The most reliable way I found in VS Code is to create a .mcp.json file in your project root folder.
+
+111
+00:06:59,100 --> 00:07:05,966
+So simply, this file tells Claude which external tools it can connect to for this project.
+
+112
+00:07:05,966 --> 00:07:11,100
+And we will add the Nano Banana MCP server with the Gemini API key.
+
+113
+00:07:11,100 --> 00:07:15,433
+I will also include the GitHub repository link below, so you can check it out.
+
+114
+00:07:15,433 --> 00:07:19,433
+Then we start VS Code, type slash command MCP.
+
+115
+00:07:19,433 --> 00:07:23,533
+So you should see all your connected MCP servers for this project.
+
+116
+00:07:23,533 --> 00:07:26,233
+So now we're ready to create the second skill.
+
+117
+00:07:26,233 --> 00:07:34,233
+So this skill will design and create carousel or single social creative using the Nano Banana model.
+
+118
+00:07:34,233 --> 00:07:37,600
+So now it is scanning the style library we just created.
+
+119
+00:07:37,600 --> 00:07:42,166
+And then pretty quickly, we have our second skill created in the same skill folder.
+
+120
+00:07:42,166 --> 00:07:45,500
+So now whenever we need some social creatives.
+
+121
+00:07:45,500 --> 00:07:51,566
+We can just give it a simple prompt like this, and let it generate.
+
+122
+00:07:51,566 --> 00:07:54,233
+So like in this case, it is a five-slide Instagram carousel.
+
+123
+00:07:54,233 --> 00:07:59,133
+And they are really nicely done, so following one of the styles from the library.
+
+124
+00:07:59,133 --> 00:08:01,266
+And not just copying the design, but just the vibe.
+
+125
+00:08:01,266 --> 00:08:06,166
+And that is why setting up references matters so much for your skill output quality.
+
+126
+00:08:06,166 --> 00:08:12,133
+So using similar methods, we have created 12 marketing skills in our skill library.
+
+127
+00:08:12,133 --> 00:08:15,866
+But the more skills you pipe into one conversation, the less focused Claude becomes.
+
+128
+00:08:15,866 --> 00:08:21,533
+Just like one person trying to be your writer, analyst, and designer all at once.
+
+129
+00:08:21,533 --> 00:08:24,200
+And that is when you need dedicated agents.
+
+130
+00:08:24,200 --> 00:08:26,566
+Or what the official called sub-agents.
+
+131
+00:08:26,566 --> 00:08:31,066
+So agents are specialized team members with their own roles and tools.
+
+132
+00:08:31,066 --> 00:08:34,366
+And then skills are the shared playbook that your agents can use.
+
+133
+00:08:34,366 --> 00:08:37,400
+So let's build our first agent, a data analyst.
+
+134
+00:08:37,400 --> 00:08:44,366
+This is a great one to start with because it thinks completely different from the content skills we just built.
+
+135
+00:08:44,366 --> 00:08:48,733
+So to create our first custom agent, we have to use the built-in agents command inside the Claude Code terminal.
+
+136
+00:08:48,733 --> 00:08:52,600
+So first type slash agents, and then click continue in terminal.
+
+137
+00:08:52,600 --> 00:08:54,766
+So where it will bring up the terminal view.
+
+138
+00:08:54,766 --> 00:08:56,366
+So here, click create new agents.
+
+139
+00:08:56,366 --> 00:08:58,033
+Then click for this project only.
+
+140
+00:08:58,033 --> 00:09:00,833
+And let Claude to generate the agent empty file for you.
+
+141
+00:09:00,833 --> 00:09:03,500
+And then tells it about what you want this agent to do.
+
+142
+00:09:03,500 --> 00:09:09,300
+So in this case, we want to create an agent called data analyst and what skill it should use.
+
+143
+00:09:09,300 --> 00:09:14,766
+And then pick the tools, the default model, color, and an agent memory location.
+
+144
+00:09:14,766 --> 00:09:18,366
+And then immediately, we created our first agent for this project.
+
+145
+00:09:18,366 --> 00:09:20,333
+And what it really does is you can see there is a new agents folder.
+
+146
+00:09:20,333 --> 00:09:23,933
+And underneath, we see there is a data analyst agent markdown file.
+
+147
+00:09:23,933 --> 00:09:29,433
+And there is a file defining the agent's role, the skill, and core responsibility.
+
+148
+00:09:29,433 --> 00:09:35,400
+Now let's say we have this campaign dataset for this project, so it contains eight different types of datasets.
+
+149
+00:09:35,400 --> 00:09:40,566
+Now to use this agent, we can just use the act tag and call this agent.
+
+150
+00:09:40,566 --> 00:09:46,466
+And ask it to create the campaign report and a performance dashboard that is ready to present.
+
+151
+00:09:46,466 --> 00:09:51,533
+So this agent will call the campaign report and data visualization skill.
+
+152
+00:09:51,533 --> 00:09:56,433
+So for the campaign report, it looks quite comprehensive with all the channel performance breakdown summary.
+
+153
+00:09:56,433 --> 00:09:59,600
+And analysis synthesized from all those datasets.
+
+154
+00:09:59,600 --> 00:10:04,366
+As for the data dashboard summarizing the topline metrics, with key takeaways.
+
+155
+00:10:04,366 --> 00:10:09,733
+Charts and diagrams that visualize different channel performance, week-on-week revenue trend.
+
+156
+00:10:09,733 --> 00:10:13,200
+And everything is interactive where you can hover or select.
+
+157
+00:10:13,200 --> 00:10:17,233
+So basically, you can see this as an on-brand template.
+
+158
+00:10:17,233 --> 00:10:20,833
+And let Claude to update this tracker whenever there's a new campaign data.
+
+159
+00:10:20,833 --> 00:10:23,266
+And this will be another huge time saver.
+
+160
+00:10:23,266 --> 00:10:28,400
+So our data analyst agent thinks in numbers, charts, and patterns.
+
+161
+00:10:28,400 --> 00:10:33,133
+Now let's build another agent for content creation, that thinks in stories and headlines.
+
+162
+00:10:33,133 --> 00:10:38,400
+Again, use the slash command agents to trigger the terminal view.
+
+163
+00:10:38,400 --> 00:10:41,400
+And use this prompt to create this content creator agent.
+
+164
+00:10:41,400 --> 00:10:46,133
+And so this agent will produce marketing content across multiple formats.
+
+165
+00:10:46,133 --> 00:10:49,766
+And equipped with the four content creation skill we just created.
+
+166
+00:10:49,766 --> 00:10:52,600
+And immediately, we created this second agent.
+
+167
+00:10:52,600 --> 00:10:57,533
+Now we can just tag this content creator agent in the chat, ask it for a relevant task.
+
+168
+00:10:57,533 --> 00:11:02,166
+So in this case, we want a blog post for an upcoming campaign that will also link to a lead magnet.
+
+169
+00:11:02,166 --> 00:11:06,466
+So Claude now dedicates the task to this agent.
+
+170
+00:11:06,466 --> 00:11:10,333
+Which it will call the blog writer skills for the blog creations that use the keyword research tool.
+
+171
+00:11:10,333 --> 00:11:13,766
+And then also use the lead magnet skills to generate the PDF guide book.
+
+172
+00:11:13,766 --> 00:11:19,233
+So the blog post is following the structure we define, with the table of content, bullet points.
+
+173
+00:11:19,233 --> 00:11:21,500
+And structure that is optimized for AI search.
+
+174
+00:11:21,500 --> 00:11:25,066
+And here it even added the link to our lead magnet resource guide.
+
+175
+00:11:25,066 --> 00:11:30,466
+So these resource guide contain 11 pages designed in a brand color tone.
+
+176
+00:11:30,466 --> 00:11:35,466
+So the design is intentionally simple to keep the focus on the content value.
+
+177
+00:11:35,466 --> 00:11:37,733
+But you can always tweak the skills for your needs.
+
+178
+00:11:37,733 --> 00:11:42,266
+So you can see how powerful Claude can be to create all kinds of marketing content that you need for your campaign.
+
+179
+00:11:42,266 --> 00:11:51,266
+So using similar methods, we can build three more agents: the market researcher, creative designer, and campaign strategist.
+
+180
+00:11:51,266 --> 00:11:54,766
+And each of them equipped with their own set of skills we created earlier.
+
+181
+00:11:54,766 --> 00:11:57,766
+But before running the AI marketing team.
+
+182
+00:11:57,766 --> 00:12:02,100
+An important step is to update the claude.md file to add agent routing rules.
+
+183
+00:12:02,100 --> 00:12:08,233
+So Claude knows explicitly when to dedicate to this agent, and it will make your system much more reliable.
+
+184
+00:12:08,233 --> 00:12:12,133
+All right, this is exciting time as we're going to give our marketing team a complex task.
+
+185
+00:12:12,133 --> 00:12:15,000
+And see how they can work together on this cell.
+
+186
+00:12:15,000 --> 00:12:20,333
+So for example, we are launching a new Japan cherry blossom season campaign.
+
+187
+00:12:20,333 --> 00:12:27,533
+And we need a full marketing package from research, campaign brief, social post, author landing page, and ad creatives.
+
+188
+00:12:27,533 --> 00:12:29,566
+Since this is a complex task.
+
+189
+00:12:29,566 --> 00:12:35,266
+So you can see Claude will design which step it needs the agents versus using skill only.
+
+190
+00:12:35,266 --> 00:12:39,000
+So that is because we have had the rules in the claude.md file.
+
+191
+00:12:39,000 --> 00:12:44,533
+So not every step requires the use of agent, like research and campaign that require synthesizing.
+
+192
+00:12:44,533 --> 00:12:46,500
+And agent can be beneficial.
+
+193
+00:12:46,500 --> 00:12:50,466
+But for content creation that is really executional and straightforward.
+
+194
+00:12:50,466 --> 00:12:51,800
+Skill should be enough.
+
+195
+00:12:51,800 --> 00:12:54,733
+So first it is calling a research tool for market research.
+
+196
+00:12:54,733 --> 00:12:57,300
+And it moves on to campaign brief once finished.
+
+197
+00:12:57,300 --> 00:13:00,300
+And then generating images and building the landing page.
+
+198
+00:13:00,300 --> 00:13:04,566
+And after like 10 minutes, it got all the deliverables ready.
+
+199
+00:13:04,566 --> 00:13:08,266
+So first, we got the market research. This is perfectly done.
+
+200
+00:13:08,266 --> 00:13:10,500
+Including the target audience we should target.
+
+201
+00:13:10,500 --> 00:13:16,666
+And then it also translates to our campaign brief with more executional details, like the messaging.
+
+202
+00:13:16,666 --> 00:13:19,233
+Where it proposed a tagline Sakura Like A Local.
+
+203
+00:13:19,233 --> 00:13:24,333
+And then the social post for the campaign with all those trending conversation it had identified.
+
+204
+00:13:24,333 --> 00:13:30,233
+And finally the ad creative, so you can see they're all tied back to the same campaign theme.
+
+205
+00:13:30,233 --> 00:13:32,133
+And particularly I like the last one.
+
+206
+00:13:32,133 --> 00:13:36,433
+Now for the offer landing page, it is also quite impressive.
+
+207
+00:13:36,433 --> 00:13:38,800
+So this is done using the landing page beta skill.
+
+208
+00:13:38,800 --> 00:13:42,533
+Everything is on the brand tone, aligned with the campaign theme.
+
+209
+00:13:42,533 --> 00:13:45,000
+The images, style all look professional.
+
+210
+00:13:45,000 --> 00:13:48,366
+With all important sections and call to action.
+
+211
+00:13:48,366 --> 00:13:53,466
+So even for complex task like this, Claude can keep all the deliverables connected.
+
+212
+00:13:53,466 --> 00:13:55,733
+Now we've built our first AI marketing team.
+
+213
+00:13:55,733 --> 00:13:58,766
+We have seen them work together on complex campaigns.
+
+214
+00:13:58,766 --> 00:14:02,833
+But in the real world, you also need to work with your real teammates too.
+
+215
+00:14:02,833 --> 00:14:08,800
+So let me show you how to set up a shared task board on Notion, where anyone on your team can drop a task.
+
+216
+00:14:08,800 --> 00:14:11,500
+And your AI agents can pick it up and get it done.
+
+217
+00:14:11,500 --> 00:14:16,500
+So here we have a simple kanban board that tracks all the marketing tasks for the team.
+
+218
+00:14:16,500 --> 00:14:20,533
+So each task we have a priority, the task title and details.
+
+219
+00:14:20,533 --> 00:14:23,133
+And all pending tasks with the status of "To Do".
+
+220
+00:14:23,133 --> 00:14:26,066
+And once they are done, they will be moved to the complete status.
+
+221
+00:14:26,066 --> 00:14:30,733
+Now the magic happens when we let the Claude agents to pick up these tasks.
+
+222
+00:14:30,733 --> 00:14:36,133
+By the way, shout out to David, a great marketer in my network who actually gave me this idea.
+
+223
+00:14:36,133 --> 00:14:42,200
+So on Claude, we can use this prompt to ask it to scan the pending tasks on this Notion board.
+
+224
+00:14:42,200 --> 00:14:44,700
+And assign an agent to do it.
+
+225
+00:14:44,700 --> 00:14:46,266
+And execute them according to priority.
+
+226
+00:14:46,266 --> 00:14:50,566
+So like this case, it will pick up the Europe campaign launch task.
+
+227
+00:14:50,566 --> 00:14:54,233
+And then calling the tools to execute the research and design the carousel post.
+
+228
+00:14:54,233 --> 00:14:59,333
+So you can see Claude update the tasks to complete status once done.
+
+229
+00:14:59,333 --> 00:15:02,233
+And include all the output file paths.
+
+230
+00:15:02,233 --> 00:15:04,500
+And we can double check our tests are successful.
+
+231
+00:15:04,500 --> 00:15:06,466
+So the research is being done successfully.
+
+232
+00:15:06,466 --> 00:15:10,966
+As well as the set of carousel posts with a total of seven slides.
+
+233
+00:15:10,966 --> 00:15:14,200
+That are informed by the research findings, which is also nicely done.
+
+234
+00:15:14,200 --> 00:15:20,200
+So that means now you can set up this task board, collaborate with a team, and let the AI agents to execute it.
+
+235
+00:15:20,200 --> 00:15:22,233
+But we can take it even further.
+
+236
+00:15:22,233 --> 00:15:25,133
+You can actually talk to your AI team from your phone.
+
+237
+00:15:25,133 --> 00:15:30,233
+So Claude Code now lets you connect your mobile device to your local running session.
+
+238
+00:15:30,233 --> 00:15:35,300
+So you can send tasks to your AI team from the Claude mobile app anywhere.
+
+239
+00:15:35,300 --> 00:15:37,700
+Even when you're away from your desk.
+
+240
+00:15:37,700 --> 00:15:42,266
+And if you are familiar with the dispatch function from Claude cowork, they are essentially the same thing.
+
+241
+00:15:42,266 --> 00:15:46,233
+So for any conversation you want to connect remotely.
+
+242
+00:15:46,233 --> 00:15:49,300
+We have to first activate the remote control.
+
+243
+00:15:49,300 --> 00:15:52,433
+So type the slash command remote control in the chat.
+
+244
+00:15:52,433 --> 00:15:56,366
+And you will see it now says remote control connected.
+
+245
+00:15:56,366 --> 00:15:58,266
+And with a remote control link.
+
+246
+00:15:58,266 --> 00:16:03,133
+So this is the link that you will open in your mobile phone to chat with your agents.
+
+247
+00:16:03,133 --> 00:16:08,233
+But don't share this link to anyone, since it will give the full control of this section.
+
+248
+00:16:08,233 --> 00:16:13,200
+So once you open it, you immediately connect with your local Claude Code session.
+
+249
+00:16:13,200 --> 00:16:16,233
+And now we can communicate with a team remotely.
+
+250
+00:16:16,233 --> 00:16:19,266
+So for example, I can just type check the task board.
+
+251
+00:16:19,266 --> 00:16:24,200
+And it will trigger the skills I have already set up and grab any pending tasks on Notion.
+
+252
+00:16:24,200 --> 00:16:26,200
+And execute it as normal.
+
+253
+00:16:26,200 --> 00:16:30,166
+So basically everything you send through your phone is immediately synced to your local Claude Code session.
+
+254
+00:16:30,166 --> 00:16:38,233
+So for this case, it has identified the new task about building a landing page for a new campaign, and get it done.
+
+255
+00:16:38,233 --> 00:16:44,233
+But the limitations for now is you can rely on this one single connected session for any task.
+
+256
+00:16:44,233 --> 00:16:48,166
+So if the context become full, you can type clear conversation.
+
+257
+00:16:48,166 --> 00:16:51,200
+To clear the context where you can start a chat again.
+
+258
+00:16:51,200 --> 00:16:56,066
+And whenever you want to disconnect, just click the three dots here and click archive.
+
+259
+00:16:56,066 --> 00:16:59,333
+And all the works are just saved locally, even if you are away.
+
+260
+00:16:59,333 --> 00:17:05,066
+So imagine you might have some urgent tasks you want your AI agent team to execute for you.
+
+261
+00:17:05,066 --> 00:17:07,066
+It can be useful.
+
+262
+00:17:07,066 --> 00:17:11,533
+And it really feels like a 24-7 teammate that works for you and gets the work done.
+
+263
+00:17:11,533 --> 00:17:14,200
+So try this yourself and build your AI agent team.
+
+264
+00:17:14,200 --> 00:17:18,133
+If you find this video helpful, please give me a thumbs up.
+
+265
+00:17:18,133 --> 00:17:19,633
+I really appreciate that.
+
+266
+00:17:19,633 --> 00:17:21,500
+I also invite you to join our growth community.
+
+267
+00:17:21,500 --> 00:17:25,133
+We are running the AI system for marketing program where we go much deeper.
+
+268
+00:17:25,133 --> 00:17:30,233
+From context setup, research workflow, all the way to building a complete system.
+
+269
+00:17:30,233 --> 00:17:32,066
+You can find the link below to join.
+
+270
+00:17:32,066 --> 00:17:34,866
+I hope to see you there and join other AI native marketers.
+
+271
+00:17:34,866 --> 00:17:37,333
+And before you go, also watch this video.
+
+272
+00:17:37,333 --> 00:17:41,200
+If you want to get started with Claude skill first for building your marketing team.
+
+273
+00:17:41,200 --> 00:17:42,366
+I'll see you next time.

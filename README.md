@@ -2,6 +2,8 @@
 
 從零開始學 Claude Code 的繁體中文教學指南，適合完全不會寫程式的人。
 
+> **聲明：** 本指南為社群自發整理的學習資源，非 Anthropic 官方出版物。Claude 和 Claude Code 是 [Anthropic](https://www.anthropic.com/) 的產品。85 個實作練習改編自 [Claude 官方使用案例](https://claude.com/resources/use-cases/)，每個練習附有原始連結。
+
 ## 線上閱讀
 
 👉 **[打開講義](https://unbias38.github.io/claude-code-guide/)**

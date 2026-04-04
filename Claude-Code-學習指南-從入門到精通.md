@@ -1,8 +1,10 @@
 # Claude Code 完全學習指南：從入門到精通
 
+**本指南為社群自發整理的學習資源，非 Anthropic 官方出版物。** Claude 和 Claude Code 是 Anthropic 的產品。
+
 **參考來源：**
 - [Claude Code 官方文件](https://code.claude.com/docs/zh-TW)
-- [Claude 官方使用案例](https://claude.com/resources/use-cases/)
+- [Claude 官方使用案例](https://claude.com/resources/use-cases/)（本書的 85 個實作練習改編自此頁面，每個練習附有原始連結）
 - 以上內容經整理、改寫、補充練習素材後編寫而成
 
 **授權條款：** 本作品採用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hant) 授權。你可以自由分享和改編本內容，但必須標示出處、不得用於商業目的、且改編後須以相同授權釋出。
