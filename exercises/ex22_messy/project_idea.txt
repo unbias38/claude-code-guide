@@ -1,0 +1,4 @@
+想做一個記帳 App
+功能：掃描發票自動記帳、月度報表、預算提醒
+技術：React Native + Supabase
+參考：Moze、CWMoney

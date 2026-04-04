@@ -1,0 +1,5 @@
+﻿交易名稱,公司,聯絡人,階段,金額(USD),建立日期,上次活動,備註
+Acme Corp 續約,Acme Corp,John Smith,談判中,85000,2025/2/10,2025/4/01,對價格有疑慮，要求 10% 折扣
+NewCo 新客,NewCo Inc.,Sarah Lee,demo完成,45000,2025/3/15,2025/3/28,對 API 整合很感興趣，需要技術 demo
+BigRetail 擴充,BigRetail,Mike Chen,提案中,120000,2025/1/20,2025/3/25,想從 Pro 升級到 Enterprise
+StartupX,StartupX,Lisa Wang,初步接觸,25000,2025/3/28,2025/3/28,昨天通話，需要跟進產品規格

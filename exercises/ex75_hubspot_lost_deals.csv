@@ -1,0 +1,9 @@
+﻿交易名稱,金額(USD),階段,結束日期,競爭對手,輸單原因,業務備註
+Acme Storage Migration,45000,已關閉-輸,2025/1/15,DataGuard,價格,客戶說 DataGuard 便宜 20%，功能差不多
+Beta Corp Backup,72000,已關閉-輸,2025/1/28,BackupPro,功能,BackupPro 有 real-time sync，我們只有每小時
+Gamma Inc DR Solution,95000,已關閉-輸,2025/2/10,SecureVault,安全認證,SecureVault 有 FedRAMP，我們還在申請
+Delta Ltd Data Protection,38000,已關閉-輸,2025/2/22,DataGuard,整合,DataGuard 跟他們的 AWS 整合更好
+Epsilon Cloud Backup,55000,已關閉-輸,2025/3/05,BackupPro,客戶關係,BackupPro 的客戶經理跟 CTO 是舊識
+Zeta Corp Enterprise,120000,已關閉-輸,2025/3/18,SecureVault,功能+價格,SecureVault 的 enterprise 方案更完整，且價格有競爭力
+Eta Systems Migration,62000,已關閉-輸,2025/3/25,DataGuard,速度,DataGuard 承諾 2 週上線，我們要 6 週
+Theta Inc Compliance,88000,已關閉-輸,2025/4/01,SecureVault,合規,SecureVault 已通過 SOC2+HIPAA，我們只有 SOC2
