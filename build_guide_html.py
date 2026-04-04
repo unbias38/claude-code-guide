@@ -427,6 +427,17 @@ def main():
 
     nav_html = build_nav(parser.headings)
 
+    # 把 exercises/ 路徑變成 GitHub 下載連結
+    REPO_BASE = 'https://github.com/unbias38/claude-code-guide/blob/master/'
+    content = re.sub(
+        r'<code class="[^"]*">(exercises/[^<]+)</code>',
+        lambda m: f'<a href="{REPO_BASE}{m.group(1)}" target="_blank" rel="noopener" '
+                  f'class="text-indigo-600 dark:text-indigo-400 hover:underline underline-offset-2">'
+                  f'<code class="px-1.5 py-0.5 bg-slate-100 dark:bg-slate-800 rounded text-[0.9em] font-mono">'
+                  f'{m.group(1)}</code></a>',
+        content
+    )
+
     print('Assembling HTML...')
     html = HEAD + CHAPTER_BAR + SIDEBAR_START + nav_html + SIDEBAR_END + MAIN_START + content + MAIN_END + BACK_TOP + script_block()
 
